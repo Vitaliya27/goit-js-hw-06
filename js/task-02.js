@@ -6,12 +6,15 @@ const ingredients = [
   'Herbs',
   'Condiments',
 ];
-
+let html = "";
 const list = document.querySelector("#ingredients");
 
-ingredients.forEach((ingredient) => {
+const items = ingredients.reduce((acc, ingredient) => {
     const listItem = document.createElement("li");
     listItem.textContent = `${ingredient}`;
     listItem.classList.add("item");
-    list.append(listItem);
-});
+    acc.push(listItem);
+    return acc;
+},[]);
+
+list.append(...items);
